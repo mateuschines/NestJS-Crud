@@ -10,37 +10,17 @@ async function bootstrap() {
 
   //Swagger
   const options = new DocumentBuilder()
-    .setTitle('Module Auth')
-    .setDescription('The auth API description')
+    .setTitle('Module All')
+    .setDescription('The API description')
     .setVersion('1.0.0')
     .addTag('auth')
-    .build();
-  const document = SwaggerModule.createDocument(app, options, {
-    include: [AuthModule],
-  });
-  SwaggerModule.setup('api/auth', app, document);
-
-  const Taskoptions = new DocumentBuilder()
-    .setTitle('Module Tasks')
-    .setDescription('The tasks API description')
-    .setVersion('1.0.0')
     .addTag('tasks')
-    .build();
-  const Tasksdocument = SwaggerModule.createDocument(app, Taskoptions, {
-    include: [TasksModule],
-  });
-  SwaggerModule.setup('api/tasks', app, Tasksdocument);
-
-  const Subtaskoptions = new DocumentBuilder()
-    .setTitle('Module Subtasks')
-    .setDescription('The subtasks API description')
-    .setVersion('1.0.0')
     .addTag('subtasks')
     .build();
-  const Subtasksdocument = SwaggerModule.createDocument(app, Subtaskoptions, {
-    include: [SubtasksModule],
+  const document = SwaggerModule.createDocument(app, options, {
+    include: [AuthModule, TasksModule, SubtasksModule],
   });
-  SwaggerModule.setup('api/subtasks', app, Subtasksdocument);
+  SwaggerModule.setup('api', app, document);
 
   // if (process.env.NODE_ENV === 'development') {
     app.enableCors();
