@@ -34,6 +34,12 @@
 $ npm install
 ```
 
+## Installation postgres in docker
+
+```bash
+$ docker run --name postgresdb -p 5432:5432 -e POSTGRES_PASSWORD=chines -d postgres
+```
+
 ## Running the app
 
 ```bash
